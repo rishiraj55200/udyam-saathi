@@ -1,0 +1,7 @@
+node_modules/
+.env
+data/runtime/
+data/ocr_cache.json
+*.log
+eng.traineddata
+.claude/

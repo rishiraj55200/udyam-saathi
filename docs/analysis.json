@@ -1,0 +1,835 @@
+{
+ "total": 5000,
+ "activated": 368,
+ "funnel": [
+  {
+   "stage": "Lead",
+   "count": 5000
+  },
+  {
+   "stage": "Contacted",
+   "count": 3406
+  },
+  {
+   "stage": "Needs assessed",
+   "count": 1974
+  },
+  {
+   "stage": "Quote accepted",
+   "count": 861
+  },
+  {
+   "stage": "KYC complete",
+   "count": 588
+  },
+  {
+   "stage": "Activated",
+   "count": 368
+  }
+ ],
+ "overall": {
+  "avg_days": 17.6,
+  "avg_calls": 3,
+  "cac": 15053,
+  "median_bundle": 6900,
+  "churn_pct": 15.2,
+  "nps": -25
+ },
+ "by_source": {
+  "Field sales": {
+   "leads": 1720,
+   "activated": 125,
+   "activation_pct": 7.3,
+   "quote_to_act_pct": 39.2,
+   "cac_per_activation": 24335,
+   "avg_days": 17.8,
+   "avg_bundle": 12966,
+   "churn_pct": 9.6,
+   "nps": -28
+  },
+  "Website form": {
+   "leads": 995,
+   "activated": 43,
+   "activation_pct": 4.3,
+   "quote_to_act_pct": 36.8,
+   "cac_per_activation": 6352,
+   "avg_days": 17.4,
+   "avg_bundle": 14834,
+   "churn_pct": 11.6,
+   "nps": -14
+  },
+  "Channel partner": {
+   "leads": 1010,
+   "activated": 81,
+   "activation_pct": 8,
+   "quote_to_act_pct": 41.3,
+   "cac_per_activation": 20851,
+   "avg_days": 17.9,
+   "avg_bundle": 10359,
+   "churn_pct": 18.5,
+   "nps": -30
+  },
+  "WhatsApp campaign": {
+   "leads": 358,
+   "activated": 10,
+   "activation_pct": 2.8,
+   "quote_to_act_pct": 55.6,
+   "cac_per_activation": 4026,
+   "avg_days": 19.8,
+   "avg_bundle": 17121,
+   "churn_pct": 20,
+   "nps": -20
+  },
+  "Referral": {
+   "leads": 413,
+   "activated": 61,
+   "activation_pct": 14.8,
+   "quote_to_act_pct": 55,
+   "cac_per_activation": 4099,
+   "avg_days": 16.6,
+   "avg_bundle": 11077,
+   "churn_pct": 24.6,
+   "nps": -15
+  },
+  "Inbound call": {
+   "leads": 504,
+   "activated": 48,
+   "activation_pct": 9.5,
+   "quote_to_act_pct": 48,
+   "cac_per_activation": 5113,
+   "avg_days": 17.6,
+   "avg_bundle": 12509,
+   "churn_pct": 14.6,
+   "nps": -35
+  }
+ },
+ "by_segment": {
+  "Professional offices": {
+   "leads": 1247,
+   "activated": 138,
+   "activation_pct": 11.1,
+   "quote_to_act_pct": 48.4,
+   "cac_per_activation": 10695,
+   "avg_days": 16.9,
+   "avg_bundle": 6796,
+   "churn_pct": 13.8,
+   "nps": -22
+  },
+  "Micro retail & services": {
+   "leads": 2709,
+   "activated": 110,
+   "activation_pct": 4.1,
+   "quote_to_act_pct": 33.8,
+   "cac_per_activation": 20007,
+   "avg_days": 16.6,
+   "avg_bundle": 2505,
+   "churn_pct": 22.7,
+   "nps": -18
+  },
+  "Small multi-site businesses": {
+   "leads": 755,
+   "activated": 83,
+   "activation_pct": 11,
+   "quote_to_act_pct": 49.4,
+   "cac_per_activation": 15614,
+   "avg_days": 18.8,
+   "avg_bundle": 31233,
+   "churn_pct": 10.8,
+   "nps": -30
+  },
+  "Small manufacturers": {
+   "leads": 289,
+   "activated": 37,
+   "activation_pct": 12.8,
+   "quote_to_act_pct": 44.6,
+   "cac_per_activation": 15324,
+   "avg_days": 20.5,
+   "avg_bundle": 19980,
+   "churn_pct": 8.1,
+   "nps": -46
+  }
+ },
+ "by_gstin": {
+  "Y": {
+   "leads": 3534,
+   "activated": 338,
+   "activation_pct": 9.6,
+   "quote_to_act_pct": 50.4,
+   "cac_per_activation": 12686,
+   "avg_days": 17.4,
+   "avg_bundle": 12900,
+   "churn_pct": 14.5,
+   "nps": -26
+  },
+  "N": {
+   "leads": 1466,
+   "activated": 30,
+   "activation_pct": 2,
+   "quote_to_act_pct": 15.8,
+   "cac_per_activation": 41728,
+   "avg_days": 19.6,
+   "avg_bundle": 6158,
+   "churn_pct": 23.3,
+   "nps": -20
+  }
+ },
+ "by_udyam": {
+  "Y": {
+   "leads": 2723,
+   "activated": 241,
+   "activation_pct": 8.9,
+   "quote_to_act_pct": 46.3,
+   "cac_per_activation": 13780,
+   "avg_days": 17.8,
+   "avg_bundle": 14687,
+   "churn_pct": 14.1,
+   "nps": -25
+  },
+  "N": {
+   "leads": 2277,
+   "activated": 127,
+   "activation_pct": 5.6,
+   "quote_to_act_pct": 37.4,
+   "cac_per_activation": 17470,
+   "avg_days": 17.2,
+   "avg_bundle": 7917,
+   "churn_pct": 17.3,
+   "nps": -25
+  }
+ },
+ "by_tier": {
+  "1": {
+   "leads": 2578,
+   "activated": 221,
+   "activation_pct": 8.6,
+   "quote_to_act_pct": 49,
+   "cac_per_activation": 13480,
+   "avg_days": 17.1,
+   "avg_bundle": 12224,
+   "churn_pct": 15.8,
+   "nps": -24
+  },
+  "2": {
+   "leads": 2422,
+   "activated": 147,
+   "activation_pct": 6.1,
+   "quote_to_act_pct": 35.9,
+   "cac_per_activation": 17419,
+   "avg_days": 18.4,
+   "avg_bundle": 12541,
+   "churn_pct": 14.3,
+   "nps": -28
+  }
+ },
+ "by_language": {
+  "Malayalam": {
+   "leads": 83,
+   "activated": 7,
+   "activation_pct": 8.4,
+   "quote_to_act_pct": 36.8,
+   "cac_per_activation": 11894,
+   "avg_days": 18.7,
+   "avg_bundle": 18869,
+   "churn_pct": 14.3,
+   "nps": 0
+  },
+  "Punjabi": {
+   "leads": 96,
+   "activated": 4,
+   "activation_pct": 4.2,
+   "quote_to_act_pct": 33.3,
+   "cac_per_activation": 19535,
+   "avg_days": 16.8,
+   "avg_bundle": 17130,
+   "churn_pct": 0,
+   "nps": 50
+  },
+  "English": {
+   "leads": 1168,
+   "activated": 94,
+   "activation_pct": 8,
+   "quote_to_act_pct": 44.1,
+   "cac_per_activation": 14125,
+   "avg_days": 17.7,
+   "avg_bundle": 11719,
+   "churn_pct": 16,
+   "nps": -27
+  },
+  "Hindi": {
+   "leads": 2137,
+   "activated": 169,
+   "activation_pct": 7.9,
+   "quote_to_act_pct": 43.3,
+   "cac_per_activation": 14197,
+   "avg_days": 17.7,
+   "avg_bundle": 11405,
+   "churn_pct": 14.2,
+   "nps": -33
+  },
+  "Telugu": {
+   "leads": 207,
+   "activated": 16,
+   "activation_pct": 7.7,
+   "quote_to_act_pct": 50,
+   "cac_per_activation": 15426,
+   "avg_days": 16.8,
+   "avg_bundle": 14941,
+   "churn_pct": 12.5,
+   "nps": -25
+  },
+  "Bengali": {
+   "leads": 111,
+   "activated": 10,
+   "activation_pct": 9,
+   "quote_to_act_pct": 45.5,
+   "cac_per_activation": 10769,
+   "avg_days": 16.7,
+   "avg_bundle": 15859,
+   "churn_pct": 30,
+   "nps": 40
+  },
+  "Kannada": {
+   "leads": 253,
+   "activated": 13,
+   "activation_pct": 5.1,
+   "quote_to_act_pct": 34.2,
+   "cac_per_activation": 25032,
+   "avg_days": 17.2,
+   "avg_bundle": 14240,
+   "churn_pct": 30.8,
+   "nps": -23
+  },
+  "Marathi": {
+   "leads": 505,
+   "activated": 32,
+   "activation_pct": 6.3,
+   "quote_to_act_pct": 49.2,
+   "cac_per_activation": 17033,
+   "avg_days": 17.2,
+   "avg_bundle": 15087,
+   "churn_pct": 21.9,
+   "nps": -22
+  },
+  "Gujarati": {
+   "leads": 233,
+   "activated": 14,
+   "activation_pct": 6,
+   "quote_to_act_pct": 36.8,
+   "cac_per_activation": 13443,
+   "avg_days": 19.1,
+   "avg_bundle": 11591,
+   "churn_pct": 0,
+   "nps": -50
+  },
+  "Tamil": {
+   "leads": 207,
+   "activated": 9,
+   "activation_pct": 4.3,
+   "quote_to_act_pct": 28.1,
+   "cac_per_activation": 26443,
+   "avg_days": 17.6,
+   "avg_bundle": 9729,
+   "churn_pct": 0,
+   "nps": 22
+  }
+ },
+ "by_lang_match": {
+  "Regional": {
+   "leads": 1695,
+   "activated": 105,
+   "activation_pct": 6.2,
+   "quote_to_act_pct": 40.7,
+   "cac_per_activation": 17263,
+   "avg_days": 17.5,
+   "avg_bundle": 14438,
+   "churn_pct": 16.2,
+   "nps": -12
+  },
+  "English/Hindi": {
+   "leads": 3305,
+   "activated": 263,
+   "activation_pct": 8,
+   "quote_to_act_pct": 43.6,
+   "cac_per_activation": 14171,
+   "avg_days": 17.7,
+   "avg_bundle": 11517,
+   "churn_pct": 14.8,
+   "nps": -30
+  }
+ },
+ "by_internet": {
+  "Business broadband": {
+   "leads": 1433,
+   "activated": 133,
+   "activation_pct": 9.3,
+   "quote_to_act_pct": 44,
+   "cac_per_activation": 14524,
+   "avg_days": 18.1,
+   "avg_bundle": 16223,
+   "churn_pct": 8.3,
+   "nps": -27
+  },
+  "Mobile hotspot": {
+   "leads": 1799,
+   "activated": 81,
+   "activation_pct": 4.5,
+   "quote_to_act_pct": 39.3,
+   "cac_per_activation": 18714,
+   "avg_days": 16.2,
+   "avg_bundle": 3393,
+   "churn_pct": 24.7,
+   "nps": -12
+  },
+  "Mixed per site": {
+   "leads": 221,
+   "activated": 28,
+   "activation_pct": 12.7,
+   "quote_to_act_pct": 50.9,
+   "cac_per_activation": 14766,
+   "avg_days": 19.7,
+   "avg_bundle": 29544,
+   "churn_pct": 3.6,
+   "nps": -36
+  },
+  "Leased line": {
+   "leads": 173,
+   "activated": 26,
+   "activation_pct": 15,
+   "quote_to_act_pct": 56.5,
+   "cac_per_activation": 14604,
+   "avg_days": 18.8,
+   "avg_bundle": 29045,
+   "churn_pct": 11.5,
+   "nps": -35
+  },
+  "Home broadband": {
+   "leads": 1250,
+   "activated": 95,
+   "activation_pct": 7.6,
+   "quote_to_act_pct": 40.8,
+   "cac_per_activation": 12583,
+   "avg_days": 17.3,
+   "avg_bundle": 5449,
+   "churn_pct": 22.1,
+   "nps": -26
+  },
+  "None": {
+   "leads": 124,
+   "activated": 5,
+   "activation_pct": 4,
+   "quote_to_act_pct": 26.3,
+   "cac_per_activation": 20712,
+   "avg_days": 16.4,
+   "avg_bundle": 2492,
+   "churn_pct": 0,
+   "nps": -60
+  }
+ },
+ "by_role": {
+  "Manager": {
+   "leads": 1025,
+   "activated": 79,
+   "activation_pct": 7.7,
+   "quote_to_act_pct": 40.7,
+   "cac_per_activation": 14533,
+   "avg_days": 18.1,
+   "avg_bundle": 11859,
+   "churn_pct": 20.3,
+   "nps": -24
+  },
+  "Owner": {
+   "leads": 2071,
+   "activated": 156,
+   "activation_pct": 7.5,
+   "quote_to_act_pct": 44.8,
+   "cac_per_activation": 15597,
+   "avg_days": 17.3,
+   "avg_bundle": 13682,
+   "churn_pct": 14.7,
+   "nps": -16
+  },
+  "Office admin": {
+   "leads": 959,
+   "activated": 63,
+   "activation_pct": 6.6,
+   "quote_to_act_pct": 40.9,
+   "cac_per_activation": 16759,
+   "avg_days": 18.1,
+   "avg_bundle": 11184,
+   "churn_pct": 9.5,
+   "nps": -43
+  },
+  "Partner": {
+   "leads": 945,
+   "activated": 70,
+   "activation_pct": 7.4,
+   "quote_to_act_pct": 42.4,
+   "cac_per_activation": 12895,
+   "avg_days": 17.4,
+   "avg_bundle": 10988,
+   "churn_pct": 15.7,
+   "nps": -31
+  }
+ },
+ "by_turnover": {
+  "40 lakh - 1.5 cr": {
+   "leads": 1537,
+   "activated": 108,
+   "activation_pct": 7,
+   "quote_to_act_pct": 43.5,
+   "cac_per_activation": 13909,
+   "avg_days": 16.5,
+   "avg_bundle": 5353,
+   "churn_pct": 14.8,
+   "nps": -29
+  },
+  "1.5 - 5 cr": {
+   "leads": 1012,
+   "activated": 84,
+   "activation_pct": 8.3,
+   "quote_to_act_pct": 45.7,
+   "cac_per_activation": 13776,
+   "avg_days": 18.1,
+   "avg_bundle": 12982,
+   "churn_pct": 14.3,
+   "nps": -10
+  },
+  "5 - 25 cr": {
+   "leads": 731,
+   "activated": 95,
+   "activation_pct": 13,
+   "quote_to_act_pct": 50.8,
+   "cac_per_activation": 13121,
+   "avg_days": 18.6,
+   "avg_bundle": 22543,
+   "churn_pct": 11.6,
+   "nps": -40
+  },
+  "< 40 lakh": {
+   "leads": 1497,
+   "activated": 58,
+   "activation_pct": 3.9,
+   "quote_to_act_pct": 30.4,
+   "cac_per_activation": 20914,
+   "avg_days": 16.8,
+   "avg_bundle": 2542,
+   "churn_pct": 27.6,
+   "nps": -16
+  },
+  "25 - 100 cr": {
+   "leads": 223,
+   "activated": 23,
+   "activation_pct": 10.3,
+   "quote_to_act_pct": 45.1,
+   "cac_per_activation": 18292,
+   "avg_days": 18.9,
+   "avg_bundle": 25541,
+   "churn_pct": 4.3,
+   "nps": -30
+  }
+ },
+ "by_calls": {
+  "n/a": {
+   "leads": 4632,
+   "activated": 0,
+   "activation_pct": 0,
+   "quote_to_act_pct": 0,
+   "cac_per_activation": null,
+   "avg_days": null,
+   "avg_bundle": null,
+   "churn_pct": null,
+   "nps": null
+  },
+  "calls <=3": {
+   "leads": 137,
+   "activated": 137,
+   "activation_pct": 100,
+   "quote_to_act_pct": 100,
+   "cac_per_activation": 5534,
+   "avg_days": 17.5,
+   "avg_bundle": 12507,
+   "churn_pct": 11.7,
+   "nps": -23
+  },
+  "calls <=2": {
+   "leads": 84,
+   "activated": 84,
+   "activation_pct": 100,
+   "quote_to_act_pct": 100,
+   "cac_per_activation": 6558,
+   "avg_days": 17.9,
+   "avg_bundle": 16691,
+   "churn_pct": 14.3,
+   "nps": -12
+  },
+  "calls >4": {
+   "leads": 43,
+   "activated": 43,
+   "activation_pct": 100,
+   "quote_to_act_pct": 100,
+   "cac_per_activation": 3668,
+   "avg_days": 17.9,
+   "avg_bundle": 9292,
+   "churn_pct": 27.9,
+   "nps": -63
+  },
+  "calls <=1": {
+   "leads": 34,
+   "activated": 34,
+   "activation_pct": 100,
+   "quote_to_act_pct": 100,
+   "cac_per_activation": 5318,
+   "avg_days": 17.3,
+   "avg_bundle": 10127,
+   "churn_pct": 5.9,
+   "nps": -3
+  },
+  "calls <=4": {
+   "leads": 70,
+   "activated": 70,
+   "activation_pct": 100,
+   "quote_to_act_pct": 100,
+   "cac_per_activation": 4774,
+   "avg_days": 17.6,
+   "avg_bundle": 9794,
+   "churn_pct": 20,
+   "nps": -34
+  }
+ },
+ "by_days": {
+  "n/a": {
+   "leads": 4632,
+   "activated": 0,
+   "activation_pct": 0,
+   "quote_to_act_pct": 0,
+   "cac_per_activation": null,
+   "avg_days": null,
+   "avg_bundle": null,
+   "churn_pct": null,
+   "nps": null
+  },
+  "days <=22": {
+   "leads": 100,
+   "activated": 100,
+   "activation_pct": 100,
+   "quote_to_act_pct": 100,
+   "cac_per_activation": 7172,
+   "avg_days": 20.3,
+   "avg_bundle": 11166,
+   "churn_pct": 16,
+   "nps": -38
+  },
+  "days >22": {
+   "leads": 43,
+   "activated": 43,
+   "activation_pct": 100,
+   "quote_to_act_pct": 100,
+   "cac_per_activation": 8017,
+   "avg_days": 25.4,
+   "avg_bundle": 22862,
+   "churn_pct": 16.3,
+   "nps": -65
+  },
+  "days <=18": {
+   "leads": 139,
+   "activated": 139,
+   "activation_pct": 100,
+   "quote_to_act_pct": 100,
+   "cac_per_activation": 4184,
+   "avg_days": 16.4,
+   "avg_bundle": 11602,
+   "churn_pct": 13.7,
+   "nps": -13
+  },
+  "days <=14": {
+   "leads": 79,
+   "activated": 79,
+   "activation_pct": 100,
+   "quote_to_act_pct": 100,
+   "cac_per_activation": 4081,
+   "avg_days": 12.8,
+   "avg_bundle": 9925,
+   "churn_pct": 13.9,
+   "nps": -13
+  },
+  "days <=10": {
+   "leads": 7,
+   "activated": 7,
+   "activation_pct": 100,
+   "quote_to_act_pct": 100,
+   "cac_per_activation": 2266,
+   "avg_days": 9.1,
+   "avg_bundle": 6926,
+   "churn_pct": 42.9,
+   "nps": 14
+  }
+ },
+ "by_bundle_size": {
+  "n/a": {
+   "leads": 4632,
+   "activated": 0,
+   "activation_pct": 0,
+   "quote_to_act_pct": 0,
+   "cac_per_activation": null,
+   "avg_days": null,
+   "avg_bundle": null,
+   "churn_pct": null,
+   "nps": null
+  },
+  "products 3": {
+   "leads": 66,
+   "activated": 66,
+   "activation_pct": 100,
+   "quote_to_act_pct": 100,
+   "cac_per_activation": 5100,
+   "avg_days": 17.4,
+   "avg_bundle": 6374,
+   "churn_pct": 13.6,
+   "nps": -17
+  },
+  "products 5": {
+   "leads": 88,
+   "activated": 88,
+   "activation_pct": 100,
+   "quote_to_act_pct": 100,
+   "cac_per_activation": 5364,
+   "avg_days": 17.5,
+   "avg_bundle": 13469,
+   "churn_pct": 13.6,
+   "nps": -26
+  },
+  "products 8": {
+   "leads": 7,
+   "activated": 7,
+   "activation_pct": 100,
+   "quote_to_act_pct": 100,
+   "cac_per_activation": 4080,
+   "avg_days": 16.7,
+   "avg_bundle": 38973,
+   "churn_pct": 42.9,
+   "nps": -57
+  },
+  "products 4": {
+   "leads": 107,
+   "activated": 107,
+   "activation_pct": 100,
+   "quote_to_act_pct": 100,
+   "cac_per_activation": 4774,
+   "avg_days": 17.6,
+   "avg_bundle": 8982,
+   "churn_pct": 15.9,
+   "nps": -15
+  },
+  "products 9": {
+   "leads": 1,
+   "activated": 1,
+   "activation_pct": 100,
+   "quote_to_act_pct": 100,
+   "cac_per_activation": 4030,
+   "avg_days": 15,
+   "avg_bundle": 13190,
+   "churn_pct": 0,
+   "nps": -100
+  },
+  "products 6": {
+   "leads": 48,
+   "activated": 48,
+   "activation_pct": 100,
+   "quote_to_act_pct": 100,
+   "cac_per_activation": 7132,
+   "avg_days": 18.2,
+   "avg_bundle": 19876,
+   "churn_pct": 10.4,
+   "nps": -40
+  },
+  "products 7": {
+   "leads": 26,
+   "activated": 26,
+   "activation_pct": 100,
+   "quote_to_act_pct": 100,
+   "cac_per_activation": 7895,
+   "avg_days": 18.5,
+   "avg_bundle": 25733,
+   "churn_pct": 15.4,
+   "nps": -38
+  },
+  "products 2": {
+   "leads": 25,
+   "activated": 25,
+   "activation_pct": 100,
+   "quote_to_act_pct": 100,
+   "cac_per_activation": 3285,
+   "avg_days": 17.1,
+   "avg_bundle": 2754,
+   "churn_pct": 24,
+   "nps": -36
+  }
+ },
+ "by_month": {
+  "2026-05": {
+   "leads": 1751,
+   "activated": 131,
+   "activation_pct": 7.5,
+   "quote_to_act_pct": 42.1,
+   "cac_per_activation": 15236,
+   "avg_days": 17.6,
+   "avg_bundle": 13353,
+   "churn_pct": 13.7,
+   "nps": -30
+  },
+  "2026-06": {
+   "leads": 1704,
+   "activated": 127,
+   "activation_pct": 7.5,
+   "quote_to_act_pct": 43.1,
+   "cac_per_activation": 15638,
+   "avg_days": 17.6,
+   "avg_bundle": 12255,
+   "churn_pct": 16.5,
+   "nps": -13
+  },
+  "2026-04": {
+   "leads": 1545,
+   "activated": 110,
+   "activation_pct": 7.1,
+   "quote_to_act_pct": 43.1,
+   "cac_per_activation": 14161,
+   "avg_days": 17.6,
+   "avg_bundle": 11267,
+   "churn_pct": 15.5,
+   "nps": -34
+  }
+ },
+ "drop_reasons_by_stage": {
+  "KYC complete": {
+   "Installation delayed beyond 21 days": 98,
+   "Site not feasible for fibre": 41,
+   "First payment failed": 28,
+   "Customer cancelled before install": 53
+  },
+  "Lead": {
+   "Not interested on first call": 470,
+   "Unreachable after 3 attempts": 805,
+   "Wrong or invalid number": 319
+  },
+  "Needs assessed": {
+   "Decided to wait": 107,
+   "Competitor offered cheaper plan": 207,
+   "Quote took too long to arrive": 179,
+   "Quote too complex to understand": 206,
+   "Price too high": 414
+  },
+  "Contacted": {
+   "Owner had no time for a visit": 531,
+   "Locked in with current provider": 325,
+   "Visit not scheduled by sales": 296,
+   "Only wanted a mobile plan": 280
+  },
+  "Quote accepted": {
+   "Document details did not match": 47,
+   "Found paperwork too long": 79,
+   "Missing GST or Udyam document": 94,
+   "Authorised signatory not available": 53
+  }
+ }
+}

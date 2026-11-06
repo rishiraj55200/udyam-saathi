@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Udyam Saathi - Airtel SYNC 2026 Track A</title>
+<style>
+  @page { size: 1920px 1080px; margin: 0; }
+  :root { --red: #e40000; --red-d: #b10000; --ink: #15171c; --ink2: #464b57; --ink3: #7a808d; --line: #e7e8ec; --soft: #fff3f3; --ok: #127a3a; --bad: #c0261d; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: "Segoe UI", "Poppins", Arial, sans-serif; color: var(--ink); background: #888; }
+  .slide { width: 1920px; height: 1080px; position: relative; overflow: hidden; background: #fff url(bg-content.jpg) center/cover no-repeat; page-break-after: always; }
+  .slide.cover { background-image: url(bg-cover.jpg); color: #fff; }
+  .safe { position: absolute; left: 96px; right: 96px; top: 150px; bottom: 110px; }
+  .kicker { font-size: 22px; font-weight: 700; color: var(--red); letter-spacing: 1.5px; text-transform: uppercase; }
+  h1 { font-size: 54px; line-height: 1.12; font-weight: 800; margin: 8px 0 22px; letter-spacing: -0.5px; }
+  h1 em { font-style: normal; color: var(--red); }
+  h3 { font-size: 26px; font-weight: 700; margin-bottom: 10px; }
+  p, li { font-size: 22px; line-height: 1.4; color: var(--ink2); }
+  .grid { display: grid; gap: 22px; }
+  .card { background: rgba(255,255,255,.96); border: 1.5px solid var(--line); border-radius: 18px; padding: 22px 24px; box-shadow: 0 4px 18px rgba(0,0,0,.05); }
+  .card.red { border-color: #ffc9c9; background: #fff6f6; }
+  .big { font-size: 60px; font-weight: 800; color: var(--red); line-height: 1; }
+  .mid { font-size: 38px; font-weight: 800; line-height: 1.05; }
+  .small { font-size: 18px; color: var(--ink3); line-height: 1.35; }
+  .tag { display: inline-block; font-size: 16px; font-weight: 700; padding: 4px 12px; border-radius: 99px; background: #ffe3e3; color: var(--red-d); }
+  .tag.g { background: #e3f5ea; color: var(--ok); } .tag.k { background: #eef0f4; color: var(--ink2); }
+  table { width: 100%; border-collapse: collapse; font-size: 20px; }
+  th { text-align: left; font-size: 16px; color: var(--ink3); font-weight: 700; padding: 8px 10px; border-bottom: 2px solid var(--line); text-transform: uppercase; letter-spacing: .5px; }
+  td { padding: 10px 10px; border-bottom: 1px solid var(--line); vertical-align: top; color: var(--ink2); }
+  td b { color: var(--ink); }
+  .bar { height: 26px; background: var(--red); border-radius: 6px; }
+  .bar.grey { background: #c9ccd3; }
+  .phone { width: 100%; border-radius: 22px; border: 6px solid #1b1d23; box-shadow: 0 10px 30px rgba(0,0,0,.18); display: block; }
+  .cap { font-size: 18px; font-weight: 700; margin-top: 10px; text-align: center; }
+  .cap span { display: block; font-weight: 400; color: var(--ink3); font-size: 16px; }
+  ul.tight { padding-left: 24px; } ul.tight li { margin: 4px 0; font-size: 20px; }
+  .arrow { color: var(--red); font-weight: 800; }
+  /* architecture */
+  .lane { border: 2px dashed #e3c4c4; border-radius: 18px; padding: 14px; position: relative; }
+  .lane > .lt { position: absolute; top: -15px; left: 16px; background: #fff; padding: 0 8px; font-size: 16px; font-weight: 800; color: var(--red); letter-spacing: 1px; text-transform: uppercase; }
+  .box { background: #fff; border: 2px solid #d9dbe1; border-radius: 14px; padding: 12px 14px; font-size: 18px; line-height: 1.3; color: var(--ink2); }
+  .box b { display: block; font-size: 20px; color: var(--ink); margin-bottom: 2px; }
+  .box.ai { border-color: #7b61ff; background: #f6f3ff; } .box.rule { border-color: var(--red); background: #fff5f5; } .box.store { border-color: #127a3a; background: #f1faf4; }
+</style>
+</head>
+<body>
+
+<!-- 1. COVER -->
+<section class="slide cover">
+  <div style="position:absolute;left:120px;top:600px;width:820px">
+    <div style="font-size:26px;font-weight:700;letter-spacing:2px;color:#ffb3b3">ENTERPRISE TRACK A · PROJECT UDYAM DIGITAL</div>
+    <div style="font-size:84px;font-weight:800;line-height:1.02;margin:10px 0 14px">Udyam Saathi</div>
+    <div style="font-size:32px;line-height:1.3;color:#ffe0e0">From <b style="color:#fff">“hello”</b> to <b style="color:#fff">“live”</b> in one sitting: a GenAI advisor, a one-screen quote, 2-minute Smart KYC and a self-serve tracker for India’s small businesses.</div>
+    <div style="margin-top:30px;font-size:24px;line-height:1.55;color:#fff">
+      <b id="team">{{team}}</b><br><span style="color:#ffcccc">{{members}}</span><br>
+      ▶ Demo: <span style="color:#ffcccc">{{video}}</span><br>⌨ Code: <span style="color:#ffcccc">{{repo}}</span>
+    </div>
+  </div>
+</section>
+
+<!-- 2. PROBLEM + INSIGHTS -->
+<section class="slide"><div class="safe">
+  <div class="kicker">The problem · what last quarter’s 5,000 leads tell us</div>
+  <h1>Only <em>7.4%</em> of SMB leads go live. The leaks are <em>visits, quotes and silence</em>, not demand.</h1>
+  <div class="grid" style="grid-template-columns: 1.05fr 1fr 1fr">
+    <div class="card">
+      <h3>Funnel, Apr–Jun 2026</h3>
+      <table style="font-size:19px;table-layout:fixed">
+        <col style="width:170px"><col><col style="width:80px">
+        <tr><td>Leads</td><td><div class="bar grey" style="width:100%"></div></td><td><b>5,000</b></td></tr>
+        <tr><td>Contacted</td><td><div class="bar grey" style="width:68%"></div></td><td><b>3,406</b></td></tr>
+        <tr><td>Needs assessed</td><td><div class="bar grey" style="width:39%"></div></td><td><b>1,974</b></td></tr>
+        <tr><td><b style="color:var(--red)">Quote accepted</b></td><td><div class="bar" style="width:17%"></div></td><td><b>861</b></td></tr>
+        <tr><td>KYC complete</td><td><div class="bar grey" style="width:12%"></div></td><td><b>588</b></td></tr>
+        <tr><td>Activated</td><td><div class="bar grey" style="width:7.4%"></div></td><td><b>368</b></td></tr>
+      </table>
+      <p class="small" style="margin-top:10px">17.6 days lead→live · 3 status chases per customer · ₹15,053 blended CAC</p>
+    </div>
+    <div class="grid" style="gap:16px">
+      <div class="card red"><div class="mid">827</div><p><b>dropped before any quote</b> because the owner had no time for a visit, or sales never scheduled it</p></div>
+      <div class="card red"><div class="mid">1,006</div><p><b>dropped at the quote</b>: price too high (414), competitor cheaper (207), quote too complex (206), too slow (179)</p></div>
+      <div class="card red"><div class="mid">273</div><p><b>lost in paperwork</b>: missing GST/Udyam docs, mismatches, no signatory, “too long”</p></div>
+    </div>
+    <div class="grid" style="gap:16px">
+      <div class="card"><h3 style="font-size:22px">Field sales costs 6× more per activation</h3>
+        <table style="font-size:18px"><tr><td>Field sales</td><td><b>₹24,335</b></td></tr><tr><td>Channel partner</td><td><b>₹20,851</b></td></tr><tr><td>Website · Inbound</td><td><b>₹6,352 · ₹5,113</b></td></tr><tr><td>Referral</td><td><b>₹4,099</b> at 14.8% conv.</td></tr></table></div>
+      <div class="card"><h3 style="font-size:22px">Silence after purchase drives churn</h3>
+        <p style="font-size:19px">Customers who chased status ≤1 time: <b>5.9% churn, NPS −3</b>. More than 4 chases: <b>27.9% churn, NPS −63</b>.</p></div>
+      <div class="card"><h3 style="font-size:22px">GST is the gate</h3><p style="font-size:19px">Activation <b>9.6%</b> with a GSTIN vs <b>2.0%</b> without. 29% of leads have none.</p></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- 3. SEGMENTS + BUNDLES -->
+<section class="slide"><div class="safe">
+  <div class="kicker">Who first · what bundle · what price</div>
+  <h1>Lead with <em>professional offices</em>, go digital-only for <em>micro</em>, assist <em>multi-site</em></h1>
+  <table>
+    <tr><th style="width:15%">Segment (share)</th><th style="width:20%">Why this order (Q1 data)</th><th style="width:31%">Launch bundle (advisor default)</th><th style="width:15%">Price / month*</th><th style="width:19%">Journey</th></tr>
+    <tr><td><span class="tag">① Priority</span><br><b>Professional offices</b> (25%)<br><span class="small">clinic · CA · coaching</span></td><td>Best economics: <b>11.1% activation, ₹10.7k CAC vs ₹6.8k bundle</b> → payback &lt; 2 months; churn 13.8%</td><td><b>“Pro Office”</b>: Biz Fibre 300 · 2 Postpaid 599 · Cloud Email per user · Endpoint Security · 1 TB Cloud Backup <span class="small">(+ backup link, SMS reminders, IVR as add-ons)</span></td><td><b>₹6,339</b> (12 m)<br><b>₹4,889</b> (36 m)<br><span class="small">8-staff clinic, ₹0 setup</span></td><td>100% digital, advisor + Smart KYC; partner only installs</td></tr>
+    <tr><td><span class="tag">② Volume</span><br><b>Micro retail &amp; services</b> (55%)</td><td>Largest base, but <b>4.1% activation, ₹20k CAC vs ₹2.5k bundle</b> → only works with near-zero-touch acquisition</td><td><b>“Dukaan Starter”</b>: Biz Fibre 100 · Cloud POS &amp; UPI billing · 1 Postpaid 299 <span class="small">(5G AirFiber if no fibre; WhatsApp API unlocks with GST)</span></td><td><b>₹2,497</b> (12 m)<br><b>₹1,897</b> (36 m)<br><span class="small">kept ≤ ₹2,500</span></td><td>Digital-only, WhatsApp/voice entry, regional language, GST-light path</td></tr>
+    <tr><td><span class="tag k">③ Value</span><br><b>Small multi-site</b> (15%)</td><td>Highest value: <b>₹31k/month</b>, lowest churn 10.8%, but longest install (18.8 d)</td><td><b>“One-Bill Chain”</b>: Fibre 300 + 4G/5G failover per site · POS per outlet · CCTV · Postpaid per manager <span class="small">(SD-WAN at 3+ sites and 10+ staff)</span></td><td><b>₹23,470</b> (12 m)<br><span class="small">5 outlets; ₹17,970 at 36 m</span></td><td>Advisor quote → field sales closes (high value)</td></tr>
+    <tr><td><span class="tag k">④ Niche</span><br><b>Small manufacturers</b> (5%)</td><td>Strong conversion (12.8%) but complex site surveys; worst NPS (−46)</td><td><b>“Factory Connect”</b>: Leased Line 20 (SLA) · Managed Firewall · Machine IoT kit · Postpaid 599 · Endpoint Security</td><td><b>₹22,327</b> (12 m)<br><span class="small">40-worker unit</span></td><td>Field-led, advisor for pre-qualification</td></tr>
+  </table>
+  <p class="small" style="margin-top:14px">*Prices come from the live prototype’s rules engine on the provided catalogue: 12-month contracts at the top of each price range, 24 months mid-range, 36 months the floor with setup 50% off. Every bundle is checked against city tier, minimum staff and sites, GSTIN requirement and product dependencies before it is shown.</p>
+</div></section>
+
+<!-- 4. SOLUTION / PROTOTYPE -->
+<section class="slide"><div class="safe">
+  <div class="kicker">The working prototype</div>
+  <h1>Five screens replace a visit, a PDF quote, a paper file and 3 calls</h1>
+  <div class="grid" style="grid-template-columns: repeat(5, 1fr); gap: 26px; align-items: start">
+    <div><img class="phone" src="../screens/12_advisor_hindi.png" style="height:440px;object-fit:cover;object-position:top"><div class="cap">1 · Advisor<span>Hindi, Marathi, Tamil, English, voice. One sentence fills 5 answers</span></div></div>
+    <div><img class="phone" src="../screens/04_quote.png" style="height:440px;object-fit:cover;object-position:top"><div class="cap">2 · Quote &amp; checkout<span>One monthly price + GST, toggle add-ons, 12/24/36 m</span></div></div>
+    <div><img class="phone" src="../screens/06_kyc_problem.png" style="height:440px;object-fit:cover;object-position:top 46%"><div class="cap">3 · Smart KYC<span>Consent → photo OCR → GSTIN/Udyam lookup → 14 checks</span></div></div>
+    <div><img class="phone" src="../screens/11_tracker.png" style="height:440px;object-fit:cover;object-position:top"><div class="cap">4 · Tracker<span>Live stages, per-product ETA, WhatsApp updates</span></div></div>
+    <div><img class="phone" src="../screens/15_backoffice_leads.png" style="height:440px;object-fit:cover;object-position:left top;border-radius:14px"><div class="cap">5 · Partner back office<span>Hand-offs + propensity-ranked call list</span></div></div>
+  </div>
+  <div class="grid" style="grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 26px">
+    <div class="card"><b style="font-size:21px">10/10 advisor test scenarios pass</b><p class="small">tier, staff, sites, GSTIN and dependency rules, in 4 languages</p></div>
+    <div class="card"><b style="font-size:21px">8 of 12 specimen applicants flagged</b><p class="small">cancelled GSTIN, blank Udyam no., blurred cert, GSTIN typo, name mismatch, 257-day-old bill, “Owner” signing for an LLP</p></div>
+    <div class="card"><b style="font-size:21px">GenAI is guard-railed</b><p class="small">Claude Opus 5.5 understands free text in any language; a deterministic rules engine decides what can be sold</p></div>
+    <div class="card"><b style="font-size:21px">Works with no AI key</b><p class="small">a rule-based multilingual parser takes over, so a live demo can never break</p></div>
+  </div>
+</div></section>
+
+<!-- 5. ARCHITECTURE -->
+<section class="slide"><div class="safe">
+  <div class="kicker">Solution architecture &amp; data flow</div>
+  <h1 style="margin-bottom:30px">AI proposes, <em>rules decide</em>, documents are read and never stored</h1>
+  <div class="grid" style="grid-template-columns: 0.8fr 0.12fr 2.4fr 0.12fr 0.95fr; gap: 0; align-items: stretch; height: 640px">
+    <div class="lane" style="display:flex;flex-direction:column;gap:14px;justify-content:center"><span class="lt">Channels</span>
+      <div class="box"><b>Mobile web / PWA</b>4 languages, low-bandwidth</div>
+      <div class="box"><b>Voice</b>speech-to-text in hi-IN, mr-IN, ta-IN</div>
+      <div class="box"><b>WhatsApp link</b>campaigns, quote sharing</div>
+      <div class="box"><b>Partner / field app</b>same journey, assisted</div>
+    </div>
+    <div style="display:grid;place-items:center;font-size:44px;color:var(--red)">→</div>
+    <div class="lane" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;align-content:start"><span class="lt">Udyam Digital platform (Node.js API)</span>
+      <div class="box ai" style="grid-column:1/3"><b>① Advisor: Udyam Saathi</b>Claude Opus 5.5 extracts business facts from free text (any language, identifiers redacted first) → slot-filling dialogue asks only what is missing (max 7 questions)</div>
+      <div class="box rule"><b>Rules engine</b>catalogue: city tier, min staff/sites, GSTIN, <i>requires_one_of</i>, segment budget guard</div>
+      <div class="box rule"><b>② Quote engine</b>term-based price within range, setup, 18% GST, add-on toggles, install ETA = slowest product</div>
+      <div class="box"><b>③ Smart KYC</b>consent gate → OCR (Tesseract) → field extraction → GSTIN checksum + OCR repair → registry lookups → 14 cross-document checks → decision</div>
+      <div class="box"><b>Mock registry APIs</b>GSTIN lookup (status: active / cancelled / suspended) · Udyam lookup · DigiLocker pull · e-sign OTP</div>
+      <div class="box"><b>④ Orders &amp; tracker</b>per-product install plan, stage events, WhatsApp notifications, tracker locked by order ID + last 4 digits of mobile</div>
+      <div class="box"><b>⑤ Back office</b>hand-offs with full context, leads ranked by propensity model (logistic regression, AUC 0.71) + next best action</div>
+      <div class="box store"><b>Data layer</b>consent ledger (versioned) · orders (hashed mobile) · <u>no document images</u> · masked logs</div>
+    </div>
+    <div style="display:grid;place-items:center;font-size:44px;color:var(--red)">→</div>
+    <div class="lane" style="display:flex;flex-direction:column;gap:14px;justify-content:center"><span class="lt">Accel systems</span>
+      <div class="box"><b>CRM / lead store</b>attribution to partner by PIN code</div>
+      <div class="box"><b>Feasibility + provisioning</b>fibre check, SIM, router, CCTV kits</div>
+      <div class="box"><b>Field force &amp; partners</b>survey, install, assisted closes</div>
+      <div class="box"><b>One bill · 121 support</b>single account for all products</div>
+    </div>
+  </div>
+</div></section>
+
+<!-- 6. PRIVACY + CHANNEL ROLE -->
+<section class="slide"><div class="safe">
+  <div class="kicker">Trust · DPDP Act 2023 · people</div>
+  <h1>Privacy by design, and a journey that <em>feeds</em> partners</h1>
+  <div class="grid" style="grid-template-columns: 1.15fr 1fr; gap: 26px">
+    <div class="card">
+      <h3>Data privacy &amp; security choices</h3>
+      <table style="font-size:17.5px">
+        <tr><td style="width:190px"><b>Consent</b></td><td>Plain-language notice in the owner’s language before KYC: what, why, how long, rights. KYC consent is required; WhatsApp updates and marketing are separate, and marketing is off by default. Versioned and timestamped in a consent ledger.</td></tr>
+        <tr><td><b>Purpose limitation</b></td><td>KYC data is used only for verification and activation. The advisor’s profile never enters the KYC record; the propensity model uses no names or identifiers.</td></tr>
+        <tr><td><b>Data minimisation</b></td><td>Documents are OCR’d in memory and the image is discarded straight away. Only the extracted fields are kept, and those are dropped once the order is placed. GSTIN, Udyam no., phone and email are <b>redacted before any text reaches the AI model</b>.</td></tr>
+        <tr><td><b>Masking</b></td><td>GSTIN 27XXXXXXXXXU1ZL, Udyam XXXX547, IDs, names and phones are masked in the UI, the back office and the logs (automatic log scrubber). Mobile numbers are stored as a hash plus the last 4 digits.</td></tr>
+        <tr><td><b>Retention &amp; rights</b></td><td>Verified details are kept for the contract plus the statutory period. A one-tap “Delete my KYC data” button (right to erasure) and a grievance officer contact sit on the consent screen.</td></tr>
+        <tr><td><b>Security</b></td><td>Image-only uploads up to 5 MB, security headers, back office behind a role key (SSO/RBAC in production), sessions expire after 2 h idle, encryption at rest and in transit in production.</td></tr>
+      </table>
+    </div>
+    <div class="grid" style="gap:18px">
+      <div class="card red"><h3>Field force &amp; channel partners</h3>
+        <ul class="tight">
+          <li><b>Assist, don’t chase:</b> “Talk to an expert” creates a hand-off with the full profile and quote, so a partner never asks the same questions twice</li>
+          <li><b>Partners keep the commission</b> on digital closes in their PIN codes, so the app is their lead engine, not a competitor</li>
+          <li><b>Call list by propensity × value:</b> field sales only for multi-site, manufacturers and high-value drops</li>
+          <li><b>Partners own the last mile:</b> site survey, installation and the first-week check-in; the tracker shows their progress live</li>
+        </ul></div>
+      <div class="card"><h3 style="font-size:22px">KYC answer quality on the specimen pack</h3>
+        <p style="font-size:19px">Blur/unreadable (K02, K04) · cancelled GSTIN + blank Udyam no. (K01) · GSTIN typo caught by checksum + nearest registry match (K06, K10) · legal-name mismatch (K07) · bill older than 90 days (K11) · “Owner” as signatory for LLP/Pvt Ltd (K05, K10, K11) · 4 clean files approved in under a minute.</p></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- 7. IMPACT, METRICS, ROLLOUT, RISKS -->
+<section class="slide"><div class="safe">
+  <div class="kicker">Success metrics · rollout · risks</div>
+  <h1>Target: <em>12%</em> lead-to-live in 6 months, at <em>half</em> the acquisition cost</h1>
+  <div class="grid" style="grid-template-columns: 1.15fr 1fr; gap: 26px">
+    <div class="card">
+      <table style="font-size:20px">
+        <tr><th>Metric</th><th>Q1 baseline</th><th>6-month target</th><th>Lever</th></tr>
+        <tr><td><b>Lead → activation</b></td><td>7.4%</td><td><b style="color:var(--red)">12%</b></td><td>no-visit discovery, instant quote</td></tr>
+        <tr><td><b>Time to activate</b></td><td>17.6 days</td><td><b style="color:var(--red)">≤ 7 days</b></td><td>KYC in minutes, parallel installs</td></tr>
+        <tr><td><b>Blended CAC / activation</b></td><td>₹15,053</td><td><b style="color:var(--red)">≤ ₹7,500</b></td><td>digital-first, field sales for high value only</td></tr>
+        <tr><td><b>Status chases / customer</b></td><td>3.0</td><td><b style="color:var(--red)">&lt; 1</b></td><td>tracker + WhatsApp updates</td></tr>
+        <tr><td><b>6-month churn</b></td><td>15.2%</td><td><b style="color:var(--red)">&lt; 10%</b></td><td>right-sized bundles, fewer chases</td></tr>
+      </table>
+      <p class="small" style="margin-top:12px">Value at target on one quarter’s 5,000 leads: +232 activations × ₹6,900 median bundle ≈ <b>₹1.9 crore new ARR per quarter</b>, plus ≈ ₹28 lakh of acquisition cost saved on today’s 368 activations. Guardrail metrics: KYC first-pass rate, NPS, partner share of closes.</p>
+    </div>
+    <div class="grid" style="gap:18px">
+      <div class="card"><h3>Rollout</h3>
+        <table style="font-size:19px">
+          <tr><td style="width:120px"><span class="tag">0–3 m</span></td><td><b>Pilot:</b> professional offices in Pune, Delhi, Nagpur and Jaipur; English + Hindi + Marathi; A/B against field sales</td></tr>
+          <tr><td><span class="tag">3–6 m</span></td><td><b>Micro digital-only</b> via WhatsApp + voice; Tamil, Telugu, Kannada, Bengali; partner commission on digital closes</td></tr>
+          <tr><td><span class="tag">6–12 m</span></td><td><b>All 22 cities</b>; live GSTN/Udyam/DigiLocker APIs; multi-site assisted journey; propensity model retrained monthly</td></tr>
+        </table></div>
+      <div class="card red"><h3>Risks &amp; mitigation</h3>
+        <ul class="tight">
+          <li><b>AI suggests the wrong product</b> → rules engine is final, advisor scenario regression suite run on every change</li>
+          <li><b>KYC fraud / tampered docs</b> → registry match + checksum; manual review queue on any fail</li>
+          <li><b>Partner pushback</b> → PIN-code attribution and commission on digital closes</li>
+          <li><b>Fibre not feasible</b> → auto-switch to 5G AirFiber, feasibility check before payment</li>
+        </ul></div>
+    </div>
+  </div>
+</div></section>
+
+</body>
+</html>

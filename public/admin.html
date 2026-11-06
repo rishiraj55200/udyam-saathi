@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Udyam Digital · Back office</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .shell { max-width: 1100px; }
+    table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    th, td { text-align: left; padding: 8px 6px; border-bottom: 1px solid var(--line); vertical-align: top; }
+    th { color: var(--ink-3); font-weight: 600; font-size: 12px; position: sticky; top: 0; background: #fff; }
+    .tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; }
+    .tabs button { border: 1.5px solid var(--line); background: #fff; border-radius: 10px; padding: 8px 12px; cursor: pointer; font-weight: 600; }
+    .tabs button.on { border-color: var(--red); color: var(--red); background: var(--red-50); }
+    .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin-bottom: 12px; }
+    .kpi { background: #fff; border-radius: 12px; padding: 12px; box-shadow: var(--shadow); }
+    .kpi b { font-size: 22px; display: block; }
+    .bar { height: 10px; background: var(--red); border-radius: 4px; }
+    .scroll { overflow-x: auto; max-height: 70vh; }
+    .score { font-weight: 700; }
+  </style>
+</head>
+<body>
+<div class="shell">
+  <header class="top"><a class="brand" href="/"><span class="logo">A</span><span><b>Accel Business</b><small>Sales & partner back office</small></span></a><span class="mini">Identifiers masked · role: partner</span></header>
+  <main>
+    <div id="login" class="card" style="max-width:360px;margin:40px auto">
+      <h2>Back-office sign in</h2><p class="mini">Demo key: <b>demo</b></p>
+      <form class="row" id="lf"><input type="password" id="key" class="field" placeholder="Access key" autocomplete="current-password"><button class="btn">Sign in</button></form>
+      <div class="err" id="lerr"></div>
+    </div>
+    <div id="dash" style="display:none">
+      <div class="kpis" id="kpis"></div>
+      <div class="tabs" id="tabs"></div>
+      <div class="card scroll" id="pane"></div>
+    </div>
+  </main>
+</div>
+<script>
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const inr = n => n == null ? '-' : '₹' + Math.round(n).toLocaleString('en-IN');
+let KEY = sessionStorage.getItem('ud_admin') || '', tab = 'handoffs', summary = null;
+const get = p => fetch(p, { headers: { 'x-admin-key': KEY } }).then(r => { if (!r.ok) throw new Error('Unauthorised'); return r.json(); });
+
+$('#lf').onsubmit = async e => { e.preventDefault(); KEY = $('#key').value; try { await boot(); sessionStorage.setItem('ud_admin', KEY); } catch (er) { $('#lerr').textContent = er.message; } };
+async function boot() {
+  summary = await get('/api/admin/summary');
+  $('#login').style.display = 'none'; $('#dash').style.display = 'block';
+  const a = summary.analysis, l = summary.live;
+  $('#kpis').innerHTML = [
+    ['Advisor hand-offs (live)', l.handoffs], ['Digital orders (live)', l.orders], ['Monthly value booked', inr(l.monthlyValue)], ['Consents recorded', l.consents],
+    ['Q1 lead → activation', (100 * a.activated / a.total).toFixed(1) + '%'], ['Blended CAC (Q1)', inr(a.overall.cac)], ['Propensity model AUC', summary.model.auc],
+  ].map(([k, v]) => `<div class="kpi"><span class="mini">${k}</span><b>${v}</b></div>`).join('');
+  $('#tabs').innerHTML = [['handoffs', 'Leads the advisor could not close'], ['leads', 'Recoverable leads · who to call'], ['orders', 'Digital orders'], ['model', 'Propensity model'], ['funnel', 'Funnel & channels']]
+    .map(([k, n]) => `<button data-k="${k}" class="${k === tab ? 'on' : ''}">${n}</button>`).join('');
+  document.querySelectorAll('#tabs button').forEach(b => (b.onclick = () => { tab = b.dataset.k; boot(); }));
+  await show();
+}
+async function show() {
+  const P = $('#pane');
+  if (tab === 'handoffs') {
+    const h = await get('/api/admin/handoffs');
+    P.innerHTML = h.length ? `<table><tr><th>Ref</th><th>When</th><th>Business</th><th>Segment</th><th>Lang</th><th>Size</th><th>GST</th><th>Quote</th><th>Stuck at</th><th>Reason</th><th>Propensity</th><th>Owner</th></tr>${h.map(x => `<tr><td>${esc(x.ref)}</td><td>${new Date(x.at).toLocaleString('en-IN')}</td><td>${esc(x.businessType || '-')}, ${esc(x.city || '')}</td><td>${esc(x.segment)}</td><td>${esc(x.lang)}</td><td>${x.employees ?? '-'} ppl / ${x.sites ?? '-'} site</td><td>${esc(x.gstin)}</td><td>${inr(x.quoteMonthly)}</td><td>${esc(x.lastStep)}</td><td>${esc(x.reason)}</td><td class="score">${(x.propensity * 100).toFixed(1)}%</td><td>${x.owner ? esc(x.owner) : `<button class="btn small" data-claim="${esc(x.ref)}">Claim</button>`}</td></tr>`).join('')}</table>`
+      : '<p>No hand-offs yet. When an owner taps “Talk to an expert” in the advisor, the lead appears here with the full context so the partner never asks the same questions again.</p>';
+    P.querySelectorAll('[data-claim]').forEach(b => (b.onclick = async () => { await fetch('/api/admin/handoffs/' + b.dataset.claim + '/claim', { method: 'POST', headers: { 'x-admin-key': KEY, 'Content-Type': 'application/json' }, body: JSON.stringify({ owner: 'Partner: Shree Telecom' }) }); show(); }));
+  } else if (tab === 'leads') {
+    const L = await get('/api/admin/leads?limit=60');
+    P.innerHTML = `<p class="mini">Dropped leads from last quarter whose drop reason is fixable, ranked by expected 12-month value = propensity × segment bundle value × 12. Contact names masked.</p>
+    <table><tr><th>Lead</th><th>Business</th><th>Segment</th><th>City</th><th>Lang</th><th>Dropped at</th><th>Reason</th><th>Source</th><th>Propensity</th><th>Exp. value</th><th>Next best action</th></tr>
+    ${L.map(x => `<tr><td>${x.lead_id}</td><td>${esc(x.business)}<div class="mini">${esc(x.contact)}</div></td><td>${esc(x.segment)}</td><td>${esc(x.city)}</td><td>${esc(x.language)}</td><td>${esc(x.stage)}</td><td>${esc(x.drop_reason)}</td><td>${esc(x.source)}</td><td class="score">${(x.propensity * 100).toFixed(1)}%</td><td>${inr(x.expected_value)}</td><td><span class="pill">${esc(x.action)}</span></td></tr>`).join('')}</table>`;
+  } else if (tab === 'orders') {
+    const o = await get('/api/admin/orders');
+    P.innerHTML = o.length ? `<table><tr><th>Order</th><th>Business</th><th>City</th><th>Monthly</th><th>Stage</th><th>Mobile</th><th>Created</th></tr>${o.map(x => `<tr><td><a href="/?order=${x.id}">${x.id}</a></td><td>${esc(x.business)}</td><td>${esc(x.city)}</td><td>${inr(x.monthly)}</td><td>${x.stage}/5</td><td>${esc(x.mobile)}</td><td>${new Date(x.createdAt).toLocaleString('en-IN')}</td></tr>`).join('')}</table>` : '<p>No digital orders yet.</p>';
+  } else if (tab === 'model') {
+    const d = summary.model.drivers, max = Math.max(...d.map(x => Math.abs(x.weight)));
+    P.innerHTML = `<h3 style="margin-top:0">What predicts activation (logistic regression on 5,000 leads, hold-out AUC ${summary.model.auc})</h3>
+      <table><tr><th>Signal</th><th>Effect</th><th style="width:40%"></th></tr>${d.map(x => `<tr><td>${esc(x.feature)}</td><td>${x.weight > 0 ? '+' : ''}${x.weight}</td><td><div class="bar" style="width:${(100 * Math.abs(x.weight) / max).toFixed(0)}%;background:${x.weight > 0 ? 'var(--ok)' : 'var(--bad)'}"></div></td></tr>`).join('')}</table>
+      <p class="mini">Used to rank which leads a human should call, and to route live advisor hand-offs. Features exclude names and identifiers.</p>`;
+  } else {
+    const a = summary.analysis, max = a.funnel[0].count;
+    const rows = (o, keys) => Object.entries(o).filter(([k]) => k !== 'n/a').sort((x, y) => y[1].leads - x[1].leads).map(([k, v]) => `<tr><td>${esc(k)}</td><td>${v.leads}</td><td>${v.activation_pct}%</td><td>${inr(v.cac_per_activation)}</td><td>${inr(v.avg_bundle)}</td><td>${v.churn_pct ?? '-'}%</td><td>${v.nps ?? '-'}</td></tr>`).join('');
+    const head = '<tr><th></th><th>Leads</th><th>Activation</th><th>CAC / activation</th><th>Avg bundle</th><th>6-m churn</th><th>NPS</th></tr>';
+    P.innerHTML = `<h3 style="margin-top:0">Funnel (Apr-Jun 2026)</h3>${a.funnel.map(f => `<div class="row" style="margin:4px 0"><span style="width:130px" class="mini">${f.stage}</span><div class="bar" style="width:${(70 * f.count / max).toFixed(1)}%"></div><b style="font-size:13px">${f.count}</b></div>`).join('')}
+      <h3>By lead source</h3><table>${head}${rows(a.by_source)}</table>
+      <h3>By segment</h3><table>${head}${rows(a.by_segment)}</table>
+      <h3>Status chases after purchase vs. churn & NPS</h3><table>${head}${rows(a.by_calls)}</table>`;
+  }
+}
+if (KEY) boot().catch(() => { KEY = ''; });
+</script>
+</body>
+</html>
