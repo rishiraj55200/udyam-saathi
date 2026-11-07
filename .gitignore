@@ -5,3 +5,5 @@ data/ocr_cache.json
 *.log
 eng.traineddata
 .claude/
+video/out/
+video/audio/

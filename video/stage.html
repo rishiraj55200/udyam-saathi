@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Udyam Saathi video stage</title>
+<style>
+  :root { --red: #e40000; --red-d: #a8001a; --ink: #15171c; --ink2: #464b57; --ink3: #7a808d; --line: #e7e8ec; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1920px; height: 1080px; overflow: hidden; font-family: "Nirmala UI", "Segoe UI", "Noto Sans Devanagari", Arial, sans-serif; color: var(--ink); background: #fff; }
+  .bg { position: absolute; inset: 0; background: url(../docs/deck/bg-content.jpg) center/cover; transition: opacity .8s; }
+  .bg.cover { background-image: url(../docs/deck/bg-cover.jpg); opacity: 0; }
+  body.dark .bg.cover { opacity: 1; }
+  .scene { position: absolute; inset: 0; opacity: 0; transition: opacity .6s; pointer-events: none; }
+  .scene.on { opacity: 1; }
+  .safe { position: absolute; left: 110px; right: 110px; top: 160px; bottom: 190px; }
+  .kicker { font-size: 26px; font-weight: 700; color: var(--red); letter-spacing: 1px; }
+  h1 { font-size: 64px; line-height: 1.2; font-weight: 800; margin: 10px 0 30px; }
+  h1 em { font-style: normal; color: var(--red); }
+  .pop { opacity: 0; transform: translateY(30px) scale(.97); }
+  .scene.on .pop { animation: pop .7s cubic-bezier(.2,.8,.2,1) forwards; }
+  @keyframes pop { to { opacity: 1; transform: none; } }
+  .grid { display: grid; gap: 28px; }
+  .card { background: rgba(255,255,255,.97); border: 2px solid var(--line); border-radius: 22px; padding: 28px 30px; box-shadow: 0 6px 24px rgba(0,0,0,.06); }
+  .card.red { background: #fff5f5; border-color: #ffc8c8; }
+  .num { font-size: 76px; font-weight: 800; color: var(--red); line-height: 1; }
+  .lbl { font-size: 28px; color: var(--ink2); margin-top: 10px; line-height: 1.35; }
+  /* funnel */
+  .fun { display: grid; grid-template-columns: 260px 1fr 120px; gap: 14px 18px; align-items: center; font-size: 28px; }
+  .bar { height: 40px; border-radius: 8px; background: #c9ccd3; width: 0; }
+  .scene.on .bar { animation: grow 1.2s ease-out forwards; }
+  .bar.red { background: var(--red); }
+  @keyframes grow { to { width: var(--w); } }
+  /* title */
+  .title-wrap { position: absolute; left: 130px; top: 545px; width: 900px; color: #fff; }
+  .title-wrap .t { font-size: 104px; font-weight: 800; line-height: 1; }
+  .title-wrap .s { font-size: 34px; margin-top: 12px; color: #ffe0e0; line-height: 1.4; }
+  .title-wrap .n { font-size: 30px; margin-top: 26px; }
+  /* steps */
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; margin-top: 20px; }
+  .step { text-align: center; }
+  .step .ic { width: 150px; height: 150px; border-radius: 40px; margin: 0 auto 22px; background: var(--red); color: #fff; display: grid; place-items: center; font-size: 72px; box-shadow: 0 12px 30px rgba(228,0,0,.3); }
+  .step b { font-size: 38px; display: block; }
+  .step span { font-size: 26px; color: var(--ink3); display: block; margin-top: 8px; line-height: 1.35; }
+  /* app scenes */
+  .device { position: absolute; left: 160px; top: 150px; width: 410px; height: 820px; border: 12px solid #15171c; border-radius: 46px; overflow: hidden; background: #fff; box-shadow: 0 24px 60px rgba(0,0,0,.25); transition: all .6s; }
+  .device iframe { width: 390px; height: 836px; border: 0; transform-origin: 0 0; transform: scale(0.99); }
+  .device.laptop { left: 100px; top: 150px; width: 1180px; height: 700px; border-radius: 18px; border-width: 14px; }
+  .device.laptop iframe { width: 1440px; height: 880px; transform: scale(0.8); }
+  .side { position: absolute; left: 700px; right: 110px; top: 170px; }
+  .side.narrow { left: 1360px; }
+  .side h2 { font-size: 64px; font-weight: 800; line-height: 1.15; margin: 8px 0 30px; }
+  .side h2 em { font-style: normal; color: var(--red); }
+  .pts { list-style: none; display: grid; gap: 22px; }
+  .pts li { font-size: 32px; line-height: 1.35; color: var(--ink2); padding-left: 54px; position: relative; }
+  .pts li::before { content: "✓"; position: absolute; left: 0; top: 2px; width: 38px; height: 38px; border-radius: 50%; background: var(--red); color: #fff; font-size: 22px; display: grid; place-items: center; font-weight: 700; }
+  .side.narrow h2 { font-size: 46px; } .side.narrow .pts li { font-size: 26px; }
+  .stat { margin-top: 34px; display: inline-block; background: #fff5f5; border: 2px solid #ffc8c8; border-radius: 18px; padding: 16px 24px; font-size: 30px; }
+  .stat b { color: var(--red); font-size: 40px; }
+  /* captions */
+  .cap { position: absolute; left: 50%; bottom: 120px; transform: translateX(-50%); max-width: 1500px; background: rgba(15,17,22,.86); color: #fff; font-size: 34px; line-height: 1.4; padding: 14px 30px; border-radius: 14px; text-align: center; transition: opacity .3s; }
+  .cap:empty { opacity: 0; }
+  body.dark .cap { bottom: 40px; }
+  #s-impact .num { font-size: 62px; }
+  body.app .cap { left: 700px; transform: none; max-width: 1110px; bottom: 110px; text-align: left; }
+  body.wide .cap { left: 1330px; max-width: 480px; font-size: 28px; bottom: 120px; }
+  .brandtag { position: absolute; right: 110px; top: 150px; font-size: 22px; color: var(--ink3); }
+  body.dark .brandtag { display: none; }
+</style>
+</head>
+<body>
+<div class="bg"></div><div class="bg cover"></div>
+
+
+<!-- title -->
+<section class="scene" id="s-title">
+  <div class="title-wrap">
+    <div class="pop" style="font-size:28px;font-weight:700;letter-spacing:2px;color:#ffb3b3">ENTERPRISE TRACK A · PROJECT UDYAM DIGITAL</div>
+    <div class="t pop" style="animation-delay:.3s">Udyam Saathi</div>
+    <div class="s pop" style="animation-delay:.7s">Small businesses, digital in one sitting<br>from “hello” to “live”</div>
+    <div class="n pop" style="animation-delay:1.1s"><b>Rishi Raj &amp; Uttam Singh</b> · DTU</div>
+  </div>
+</section>
+
+<!-- problem -->
+<section class="scene" id="s-problem"><div class="safe">
+  <div class="kicker pop">THE PROBLEM</div>
+  <h1 class="pop" style="animation-delay:.2s">Only <em>368</em> of 5,000 leads become customers</h1>
+  <div class="grid" style="grid-template-columns:1.3fr 1fr">
+    <div class="card pop" style="animation-delay:.5s"><div class="fun">
+      <span>Leads</span><div class="bar" style="--w:100%"></div><b>5,000</b>
+      <span>Contacted</span><div class="bar" style="--w:68%;animation-delay:.2s"></div><b>3,406</b>
+      <span>Needs assessed</span><div class="bar" style="--w:39%;animation-delay:.4s"></div><b>1,974</b>
+      <span style="color:var(--red);font-weight:700">Quote accepted</span><div class="bar red" style="--w:17%;animation-delay:.6s"></div><b>861</b>
+      <span>KYC complete</span><div class="bar" style="--w:12%;animation-delay:.8s"></div><b>588</b>
+      <span>Activated</span><div class="bar" style="--w:7.4%;animation-delay:1s"></div><b>368</b>
+    </div></div>
+    <div class="grid" style="gap:20px">
+      <div class="card red pop" style="animation-delay:1.5s"><div class="num">7.4%</div><div class="lbl">of leads become customers</div></div>
+      <div class="card pop" style="animation-delay:2.5s"><div class="num">17.6 days</div><div class="lbl">from lead to live · 3 status calls</div></div>
+      <div class="card pop" style="animation-delay:3.5s"><div class="num">₹15,000</div><div class="lbl">cost to acquire one customer</div></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- insights -->
+<section class="scene" id="s-insights"><div class="safe">
+  <div class="kicker pop">WHAT THE DATA SAYS</div>
+  <h1 class="pop" style="animation-delay:.2s">The leaks are <em>visits, quotes and silence</em>, not demand</h1>
+  <div class="grid" style="grid-template-columns:repeat(4,1fr)">
+    <div class="card red pop" style="animation-delay:.6s"><div class="num">827</div><div class="lbl">leads lost because no visit happened</div></div>
+    <div class="card red pop" style="animation-delay:2.6s"><div class="num">1,006</div><div class="lbl">lost at the quote: costly, confusing, slow</div></div>
+    <div class="card pop" style="animation-delay:5s"><div class="num">6×</div><div class="lbl">field sales cost vs digital<br><span style="font-size:22px;color:var(--ink3)">₹24,335 vs ₹4,099 per customer</span></div></div>
+    <div class="card pop" style="animation-delay:7.5s"><div class="num">5×</div><div class="lbl">higher churn when customers keep chasing status</div></div>
+  </div>
+</div></section>
+
+<!-- solution -->
+<section class="scene" id="s-solution"><div class="safe">
+  <div class="kicker pop">OUR SOLUTION</div>
+  <h1 class="pop" style="animation-delay:.2s"><em>Udyam Saathi</em>: four simple steps</h1>
+  <div class="steps">
+    <div class="step pop" style="animation-delay:1.6s"><div class="ic">💬</div><b>AI advisor</b><span>in their language, no visit</span></div>
+    <div class="step pop" style="animation-delay:2.6s"><div class="ic">₹</div><b>One-screen quote</b><span>one clear monthly price</span></div>
+    <div class="step pop" style="animation-delay:3.6s"><div class="ic">✓</div><b>Smart KYC</b><span>from a photo, in minutes</span></div>
+    <div class="step pop" style="animation-delay:4.6s"><div class="ic">📍</div><b>Live tracker</b><span>no support calls</span></div>
+  </div>
+</div></section>
+
+<!-- app scenes share one device frame -->
+<div class="device" id="device" style="opacity:0"><iframe id="app" src="about:blank"></iframe></div>
+
+<section class="scene" id="s-advisor"><div class="side">
+  <div class="kicker pop">STEP 1 · AI ADVISOR</div>
+  <h2 class="pop" style="animation-delay:.2s">One line, in <em>their own language</em></h2>
+  <ul class="pts">
+    <li class="pop" style="animation-delay:4s">Understands 5 facts from one sentence</li>
+    <li class="pop" style="animation-delay:11s">Asks only what is missing</li>
+    <li class="pop" style="animation-delay:16s">Explains every product in plain words</li>
+    <li class="pop" style="animation-delay:22s">AI understands, rules engine decides</li>
+  </ul>
+  <div class="stat pop" style="animation-delay:24s">Hindi · Marathi · Tamil · English · Voice</div>
+</div></section>
+
+<section class="scene" id="s-quote"><div class="side">
+  <div class="kicker pop">STEP 2 · QUOTE</div>
+  <h2 class="pop" style="animation-delay:.2s">One <em>clear price</em>, no product codes</h2>
+  <ul class="pts">
+    <li class="pop" style="animation-delay:2s">Monthly price, GST shown separately</li>
+    <li class="pop" style="animation-delay:5s">12 / 24 / 36 months: longer contract, lower price</li>
+    <li class="pop" style="animation-delay:10s">Toggle add-ons, total updates live</li>
+  </ul>
+  <div class="stat pop" style="animation-delay:12s">Before: <b>3-5 days</b> · Now: <b>instant</b></div>
+</div></section>
+
+<section class="scene" id="s-kyc"><div class="side">
+  <div class="kicker pop">STEP 3 · SMART KYC</div>
+  <h2 class="pop" style="animation-delay:.2s">KYC from a photo, in <em>minutes</em></h2>
+  <ul class="pts">
+    <li class="pop" style="animation-delay:1s">Clear consent first (DPDP Act 2023)</li>
+    <li class="pop" style="animation-delay:6s">Documents are never stored</li>
+    <li class="pop" style="animation-delay:10s">GSTIN checksum + registries + 14 checks</li>
+    <li class="pop" style="animation-delay:15s">Cancelled GSTIN, blank Udyam no.: caught instantly</li>
+  </ul>
+  <div class="stat pop" style="animation-delay:24s">Problems caught in <b>8 of 12</b> sample files</div>
+</div></section>
+
+<section class="scene" id="s-track"><div class="side">
+  <div class="kicker pop">STEP 4 · PAY &amp; TRACK</div>
+  <h2 class="pop" style="animation-delay:.2s">From order to <em>live</em>, fully visible</h2>
+  <ul class="pts">
+    <li class="pop" style="animation-delay:1s">e-Sign with OTP, pay by UPI</li>
+    <li class="pop" style="animation-delay:6s">Every stage and every product date</li>
+    <li class="pop" style="animation-delay:10s">Updates on WhatsApp</li>
+  </ul>
+  <div class="stat pop" style="animation-delay:12s">Before: <b>3 calls</b> · Now: <b>0</b></div>
+</div></section>
+
+<section class="scene" id="s-backoffice"><div class="side narrow">
+  <div class="kicker pop">PARTNER BACK OFFICE</div>
+  <h2 class="pop" style="animation-delay:.2s">Digital <em>helps partners</em></h2>
+  <ul class="pts">
+    <li class="pop" style="animation-delay:2s">Leads the advisor could not close, with full context</li>
+    <li class="pop" style="animation-delay:7s">A model ranks who to call first</li>
+    <li class="pop" style="animation-delay:11s">Partners own installation</li>
+  </ul>
+</div></section>
+
+<section class="scene" id="s-impact"><div class="safe">
+  <div class="kicker pop">IMPACT</div>
+  <h1 class="pop" style="animation-delay:.2s">Our 6-month targets</h1>
+  <div class="grid" style="grid-template-columns:repeat(3,1fr)">
+    <div class="card red pop" style="animation-delay:1.5s"><div class="lbl">Conversion</div><div class="num">7.4% → 12%</div></div>
+    <div class="card red pop" style="animation-delay:3s"><div class="lbl">Time to go live</div><div class="num">17.6 → 7 days</div></div>
+    <div class="card red pop" style="animation-delay:4.5s"><div class="lbl">Cost per customer</div><div class="num">Half</div></div>
+  </div>
+  <div class="pop" style="animation-delay:7s;margin-top:50px;font-size:54px;font-weight:800;text-align:center">Udyam Saathi: <span style="color:var(--red)">from hello to live, in one sitting</span></div>
+  <div class="pop" style="animation-delay:9s;margin-top:18px;font-size:30px;text-align:center;color:var(--ink3)">github.com/rishiraj55200/udyam-saathi · Rishi Raj &amp; Uttam Singh, DTU</div>
+</div></section>
+
+<div class="cap" id="cap"></div>
+
+<script>
+  const APP_SCENES = ['advisor', 'quote', 'kyc', 'track', 'backoffice'];
+  let capTimer = [];
+  // Show a scene; captions are split into sentences and timed proportionally across its duration.
+  window.showScene = (id, durMs, text) => {
+    document.querySelectorAll('.scene').forEach(s => s.classList.toggle('on', s.id === 's-' + id));
+    document.body.classList.toggle('dark', id === 'title');
+    document.body.classList.toggle('app', APP_SCENES.includes(id));
+    document.body.classList.toggle('wide', id === 'backoffice');
+    const dev = document.getElementById('device');
+    dev.style.opacity = APP_SCENES.includes(id) ? 1 : 0;
+    dev.classList.toggle('laptop', id === 'backoffice');
+    capTimer.forEach(clearTimeout); capTimer = [];
+    const cap = document.getElementById('cap');
+    const parts = text.split(/(?<=[.।!?:,])\s+/).reduce((acc, p) => {
+      if (acc.length && (acc[acc.length - 1] + ' ' + p).length < 70) acc[acc.length - 1] += ' ' + p; else acc.push(p);
+      return acc;
+    }, []);
+    const total = parts.reduce((s, p) => s + p.length, 0);
+    let t = 0;
+    parts.forEach(p => { capTimer.push(setTimeout(() => (cap.textContent = p), t)); t += (p.length / total) * durMs; });
+    capTimer.push(setTimeout(() => (cap.textContent = ''), durMs - 150));
+  };
+</script>
+</body>
+</html>

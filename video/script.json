@@ -1,0 +1,52 @@
+[
+  {
+    "id": "title",
+    "type": "card",
+    "text": "Hello! We are Rishi Raj and Uttam Singh from Delhi Technological University. This is Udyam Saathi: a way for small businesses to go digital in one sitting."
+  },
+  {
+    "id": "problem",
+    "type": "card",
+    "text": "India has over six crore small businesses. Yet out of five thousand leads, only three hundred and sixty eight become customers, just seven point four percent. Visits don't happen, quotes are slow and confusing, KYC is paper heavy, and going live takes seventeen days."
+  },
+  {
+    "id": "insights",
+    "type": "card",
+    "text": "The data shows where it leaks. Eight hundred and twenty seven leads were lost waiting for a visit, and over a thousand at the quote. Field sales costs six times more per customer than digital, and customers who keep chasing their status are five times more likely to leave."
+  },
+  {
+    "id": "solution",
+    "type": "card",
+    "text": "Our solution is Udyam Saathi. Four simple steps: an AI advisor, a one screen quote, smart KYC, and a live order tracker."
+  },
+  {
+    "id": "advisor",
+    "type": "app",
+    "text": "The owner types one line, here in Hindi: a salon in Jaipur, four staff, with GST. From that one line the advisor gets five facts and asks only what is missing. Every product comes with a plain reason, and the core bundle stays under two thousand five hundred rupees. The AI understands the owner, but our rules engine decides what can be sold."
+  },
+  {
+    "id": "quote",
+    "type": "app",
+    "text": "The quote shows one clear monthly price, with GST shown separately. Pick twelve, twenty four or thirty six months, and longer contracts cost less. Switch add ons on or off, and the total updates instantly."
+  },
+  {
+    "id": "kyc",
+    "type": "app",
+    "text": "First, a clear consent notice, with marketing off by default. Documents are read from a photo and never stored. We verify the GSTIN checksum and the GST and Udyam registries, and run fourteen cross document checks. Here the GSTIN is cancelled and the Udyam number is blank, and it is caught instantly. A clean file is approved in seconds. We caught problems in eight of the twelve sample files."
+  },
+  {
+    "id": "track",
+    "type": "app",
+    "text": "The owner e-signs with an O T P, pays the first month by U P I, and the order is confirmed. The tracker shows every stage and every product's date, with WhatsApp updates. No need to call support."
+  },
+  {
+    "id": "backoffice",
+    "type": "app",
+    "text": "The partner back office receives every lead the advisor could not close, with full context. A propensity model ranks who to call first. Digital helps our partners instead of competing with them."
+  },
+  {
+    "id": "impact",
+    "type": "card",
+    "text": "Our six month targets: twelve percent conversion, activation in seven days, and half the acquisition cost. Udyam Saathi: from hello to live, in one sitting. Thank you!"
+  }
+]

@@ -17,7 +17,8 @@ const { maskGstin, maskUdyam, maskName, maskPhone, safeLog } = require('./mask')
 
 const app = express();
 app.use(express.json({ limit: '200kb' }));
-app.use((req, res, next) => { res.set({ 'X-Content-Type-Options': 'nosniff', 'Referrer-Policy': 'no-referrer', 'X-Frame-Options': 'DENY' }); next(); });
+// Framing is denied by default (clickjacking protection). VIDEO_MODE=1 relaxes it only for recording the demo video locally.
+app.use((req, res, next) => { res.set({ 'X-Content-Type-Options': 'nosniff', 'Referrer-Policy': 'no-referrer', ...(process.env.VIDEO_MODE === '1' ? {} : { 'X-Frame-Options': 'DENY' }) }); next(); });
 app.use(express.static(path.join(__dirname, '..', 'public')));
 // Documents are processed in memory and never written to disk (data minimisation). 5 MB cap, images/PDF only.
 const upload = multer({ storage: multer.memoryStorage(), limits: { fileSize: 5 * 1024 * 1024 }, fileFilter: (req, f, cb) => cb(null, /^image\//.test(f.mimetype)) });
