@@ -7,6 +7,7 @@ const path = require('path');
 
 const DECK = path.join(__dirname, '..', 'docs', 'deck');
 const OUT = path.join(__dirname, '..', 'submission');
+const NAME = process.env.DECK_NAME || 'Udyam_Saathi_Final';
 fs.mkdirSync(OUT, { recursive: true });
 const cfg = JSON.parse(fs.readFileSync(path.join(DECK, 'deck-config.json'), 'utf8'));
 const esc = s => String(s).replace(/[&<>]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
@@ -38,7 +39,7 @@ const NOTES = [
     await el.screenshot({ path: f });
     pngs.push(f);
   }
-  await page.pdf({ path: path.join(OUT, 'Udyam_Saathi_Deck.pdf'), width: '1920px', height: '1080px', printBackground: true, pageRanges: `1-${n}` });
+  await page.pdf({ path: path.join(OUT, NAME + '.pdf'), width: '1920px', height: '1080px', printBackground: true, pageRanges: `1-${n}` });
   await browser.close();
 
   const pptx = new PptxGenJS();
@@ -49,7 +50,7 @@ const NOTES = [
     s.addImage({ path: f, x: 0, y: 0, w: 13.333, h: 7.5 });
     s.addNotes(NOTES[i] || '');
   });
-  await pptx.writeFile({ fileName: path.join(OUT, 'Udyam_Saathi_Deck.pptx') });
+  await pptx.writeFile({ fileName: path.join(OUT, NAME + '.pptx') });
   fs.unlinkSync(tmp);
-  for (const f of ['Udyam_Saathi_Deck.pdf', 'Udyam_Saathi_Deck.pptx']) console.log(f, (fs.statSync(path.join(OUT, f)).size / 1e6).toFixed(1) + ' MB');
+  for (const f of [NAME + '.pdf', NAME + '.pptx']) console.log(f, (fs.statSync(path.join(OUT, f)).size / 1e6).toFixed(1) + ' MB');
 })().catch(e => { console.error(e); process.exit(1); });

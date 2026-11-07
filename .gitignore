@@ -6,3 +6,4 @@ data/ocr_cache.json
 eng.traineddata
 video/out/
 video/audio/
+docs/deck/_render.html
