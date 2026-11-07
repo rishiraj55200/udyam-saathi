@@ -22,7 +22,7 @@ npm run test:advisor   # 10 advisor scenarios in 4 languages + catalogue rule ch
 npm run test:kyc       # Smart KYC over the 12 specimen applicants
 npm run analyse        # funnel / driver analysis of smb_leads.csv -> docs/analysis.json
 node scripts/screens.js     # end-to-end UI run in headless Chrome, saves docs/screens/*.png
-node scripts/build-deck.js  # builds submission/Udyam_Saathi_Final.pdf + .pptx (edit docs/deck/deck-config.json first)
+node scripts/build-deck.js  # builds submission/Udyam_Saathi_Submission.pdf + .pptx (edit docs/deck/deck-config.json first)
 ```
 
 ## What is inside

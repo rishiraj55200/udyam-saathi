@@ -7,7 +7,7 @@ const path = require('path');
 
 const DECK = path.join(__dirname, '..', 'docs', 'deck');
 const OUT = path.join(__dirname, '..', 'submission');
-const NAME = process.env.DECK_NAME || 'Udyam_Saathi_Final';
+const NAME = process.env.DECK_NAME || 'Udyam_Saathi_Submission';
 fs.mkdirSync(OUT, { recursive: true });
 const cfg = JSON.parse(fs.readFileSync(path.join(DECK, 'deck-config.json'), 'utf8'));
 const esc = s => String(s).replace(/[&<>]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
@@ -32,12 +32,24 @@ const NOTES = [
   await page.setViewport({ width: 1920, height: 1080, deviceScaleFactor: 1 });
   await page.goto('file:///' + tmp.replace(/\\/g, '/'), { waitUntil: 'networkidle0' });
   const n = await page.$$eval('.slide', s => s.length);
-  const pngs = [];
+  const pngs = [], links = [];
+  const PX_PER_IN = 1920 / 13.333;
   for (let i = 0; i < n; i++) {
     const el = (await page.$$('.slide'))[i];
     const f = path.join(DECK, `slide${i + 1}.png`);
     await el.screenshot({ path: f });
     pngs.push(f);
+    // links: crop each <a> as an image and remember its position, so the PPTX gets a clickable copy on top
+    const sb = await el.boundingBox();
+    const as = await el.$$('a[href]');
+    links[i] = [];
+    for (let k = 0; k < as.length; k++) {
+      const bb = await as[k].boundingBox();
+      const url = await as[k].evaluate(a => a.href);
+      const lf = path.join(DECK, `slide${i + 1}_link${k + 1}.png`);
+      await as[k].screenshot({ path: lf });
+      links[i].push({ url, file: lf, x: (bb.x - sb.x) / PX_PER_IN, y: (bb.y - sb.y) / PX_PER_IN, w: bb.width / PX_PER_IN, h: bb.height / PX_PER_IN });
+    }
   }
   await page.pdf({ path: path.join(OUT, NAME + '.pdf'), width: '1920px', height: '1080px', printBackground: true, pageRanges: `1-${n}` });
   await browser.close();
@@ -48,6 +60,7 @@ const NOTES = [
   pngs.forEach((f, i) => {
     const s = pptx.addSlide();
     s.addImage({ path: f, x: 0, y: 0, w: 13.333, h: 7.5 });
+    for (const l of links[i] || []) s.addImage({ path: l.file, x: l.x, y: l.y, w: l.w, h: l.h, hyperlink: { url: l.url, tooltip: l.url } });
     s.addNotes(NOTES[i] || '');
   });
   await pptx.writeFile({ fileName: path.join(OUT, NAME + '.pptx') });
